@@ -6,14 +6,20 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data i czas</title>
+        <title>Timer</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="newcss.css">
-        <script src="newjavascript.js"></script>
+        <script type="text/javascript" src="newjavascript.js"></script>
     </head>
-    <body onload="startTime()">
-        <p>Data i czas</p>
-        <p id="txt"></p>
+    <body>
+        <form> 
+            <div id="tm">00:00:00</div>
+            <label>Write minutes</label></br>
+            <input type="number" id="minutes">
+            <input type="button" value="Start" onclick="Start()">
+            <input type="button" value="Reset"  onclick="T3()">
+        </form>
+        
+        
     </body>
 </html>
