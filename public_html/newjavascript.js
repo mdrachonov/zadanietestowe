@@ -1,51 +1,58 @@
-    function T(){
-        s -= 1;
+class Timer {
+    countDown() {
+        this.s--;
         
-        if(s < 0) s=59,m-=1;
-        
-        if(m < 0) m=59; 
-        
-        
-        if(s + m == 0)T3()  
-        
-        s = s + "";
-        m = m + "";
-        
-        if (s.length < 2) s = "0" + s;
-        
-        if (m.length < 2) m = "0" + m;
-        
-        tm.innerHTML = m + ":" + s; 
-    }    
-    
-    function Start(){
-        window.m = +document.getElementById('minutes').value;
-        window.s = 00;
-        window.r = 0; 
-        window.tt = 0;
-        
-        document.getElementById("minutes").setAttribute("disabled","");
-          
-        if(!r){
-            r = 1;
-            T2()
+        if (this.s < 0) { //sprawdza sekundy na dodatność
+            this.s = 59;
+            this.m--;
         }
-    }
-    
-    function T2() {
         
-        if( s + m == 0)s = 00,m = 00;
+        if (this.m < 0) { //sprawdza minuty na dodatność
+            this.m = 59;
+        } 
         
-        tt = setInterval("T()",1000);
-    }           
-    
-    function T3(){      
+        if (this.s + this.m == 0) resetTimer();  //resetuje przy końcu odlicznia
         
-            clearInterval(tt);
+        this.s = this.s + "";
+        this.m = this.m + "";
+        
+        if (this.s.length < 2) { 
+            this.s = "0" + this.s; //robi dwucyfrową liczbę sekund
+        }
+        
+        if (this.m.length < 2) { 
+            this.m = "0" + this.m; //robi dwucyfrową liczbę minut
+        }
+        
+        document.getElementById('tm').innerHTML = this.m + ":" + this.s; 
+    }    
+       
+    resetTimer(){             
+            clearInterval(this.timerId);
             
-            tm.innerHTML = '00' + ':' + '00';
+            this.m = 0;
+            this.s = 0;
+            
+            document.getElementById('tm').innerHTML = '00' + ':' + '00';
             document.getElementById("minutes").value = "";
             document.getElementById("minutes").removeAttribute("disabled","");
             
-            r = 0;
+            this.status = 0;
         }
+   
+    start(){   
+        document.getElementById("minutes").setAttribute("disabled","");
+        
+        this.m = +document.getElementById("minutes").value; //ustaliamy zmienne
+        this.s = 0;
+        this.status = 0; 
+        this.timerId;
+          
+        if(!this.status){       //sprawdza status minutnika
+            this.status = 1;
+            this.timerId = setInterval(this.countDown.bind(this), 1000); //uruchamia minutnik
+        }
+    }
+}
+
+var timer = new Timer();
