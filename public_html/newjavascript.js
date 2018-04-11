@@ -1,22 +1,20 @@
-function startTime()
-{
-    var tm=new Date();
-    var h=tm.getHours();
-    var m=tm.getMinutes();
-    var s=tm.getSeconds();
-    m=checkTime(m);
-    s=checkTime(s);
-
-    document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+function startTime() {
+    var date = new Date();
     
-    t=setTimeout('startTime()',500);
+    var h = date.getHours(); //pobiera godziny
+    var m = date.getMinutes(); //pobiera minuty
+    var s = date.getSeconds(); //pobiera sekundy
+    
+    m = checkTime(m); //robi minuty dwucyfrowymi
+    s = checkTime(s); //robi secundy dwucyfrowymi
+
+    document.getElementById('clock').innerHTML = h + ":" + m + ":" + s; //wypisuje czas
+    
+    t = setTimeout('startTime()', 500);
 }
 
-function checkTime(i)
-{
-    if (i<10) {
-        i="0" + i;
-    }
-
+function checkTime(i) {
+    if (i < 10) i = "0" + i;
+    
     return i;
 }
