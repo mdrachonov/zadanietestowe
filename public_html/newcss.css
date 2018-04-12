@@ -1,18 +1,18 @@
 body, html {
-          height: 100%;
-          margin: 0;
-          -webkit-font-smoothing: antialiased;
-          font-weight: 100;
-          background: #aadfeb;
-          text-align: center;
-          font-family: helvetica;
+        height: 100%;
+        margin: 0;        
+        font-weight: 100;
+        background: #aadfeb;
+        text-align: center;
+        font-family: helvetica;
       }
- 
+
       .tabs input[type=radio] {
-          position: absolute;
-          top: -9999px;
-          left: -9999px;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
       }
+
       .tabs {
         width: 650px;
         float: none;
@@ -21,39 +21,40 @@ body, html {
         padding: 0;
         margin: 75px auto;
       }
+
       .tabs li{
         float: left;
       }
+
       .tabs label {
-          display: block;
-          padding: 10px 20px;
-          border-radius: 2px 2px 0 0;
-          color: #08C;
-          font-size: 24px;
-          font-weight: normal;
-          font-family: Arial;
-          background: rgba(255,255,255,0.2);
-          cursor: pointer;
-          position: relative;
-          top: 3px;
-          transition: all 0.2s ease-in-out;
+        display: block;
+        padding: 10px 20px;          
+        color: #08C;
+        font-size: 24px;
+        font-weight: normal;
+        background: rgba(255,255,255,0.2);
+        cursor: pointer;
+        position: relative;
+        top: 3px;
+        transition: all 0.2s;
       }
-      
+
       .tabs label:hover {
         background: rgba(255,255,255,0.5);
         top: 0;
       }
- 
+
       [id^=tab]:checked + label {
         background: #08C;
         color: white;
         top: 0;
       }
- 
+
       [id^=tab]:checked ~ [id^=tab-content] {
-          display: block;
+        display: block;
       }
-      .tab-content{
+
+      .tab-content {
         z-index: 2;
         display: none;
         text-align: left;
@@ -68,5 +69,17 @@ body, html {
         top: 53px;
         left: 0;
         box-sizing: border-box;
-        animation-duration: 0.5s;
+      }
+
+      input#minutes {
+        background: #aadfeb;
+        border: none;
+        height: 20px;
+        border: 1px solid white;
+        color: #08C;
+        padding: 3px;
+      }
+      
+      p#textMinute {
+        margin-bottom: -5px;
       }

@@ -1,23 +1,31 @@
-function startTime() {
-    var date = new Date();
+class startTime {
+    constructor(){
+            this.count();
+    }
     
-    var h = date.getHours(); //pobiera godziny
-    var m = date.getMinutes(); //pobiera minuty
-    var s = date.getSeconds(); //pobiera sekundy
-    
-    m = checkTime(m); //robi minuty dwucyfrowymi
-    s = checkTime(s); //robi secundy dwucyfrowymi
+    count(){
+            var date = new Date();
 
-    document.getElementById('clock').innerHTML = h + ":" + m + ":" + s; //wypisuje czas
-    
-    t = setTimeout('startTime()', 500);
+            this.h = date.getHours();
+            this.m = date.getMinutes(); 
+            this.s = date.getSeconds();
+
+            this.m = this.checkTime(this.m); 
+            this.s = this.checkTime(this.s); 
+
+            document.getElementById('clock').innerHTML = this.h + ":" + this.m + ":" + this.s; 
+
+            this.t = setTimeout(this.count.bind(this), 500);
+    }
+
+    checkTime(i) {
+            if (i < 10) i = "0" + i;
+
+            return i;
+    }
 }
 
-function checkTime(i) {
-    if (i < 10) i = "0" + i;
-    
-    return i;
-}
+var Clock = new startTime();
 
 class Timer {
     countDown() {

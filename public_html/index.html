@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="newcss.css">
         <link rel="shortcut icon" href="#">
-        <script type="text/javascript" src="newjavascript.js"></script>
+        <script type="text/javascript" src="newjavascript.js" defer></script>
     </head>
-    <body onload="startTime()">        
+    <body onload="Clock.count()">        
         <ul class="tabs">
         <li>
             <input type="radio" checked name="tabs" id="tab1">
@@ -23,9 +23,8 @@
             <label for="tab2">Minutnik</label>
             <div id="tab-content2" class="tab-content animated fadeIn">
             <div id="tm">00:00</div>
-            <p class="textMinute">Write minutes</p><br>
+            <p id="textMinute">Write minutes</p><br>
             <input type="number" id="minutes">
-            <script type="text/javascript" src="newjavascript.js"></script>
             <input type="button" value="Start" onclick="timer.start()">
             <input type="button" value="Reset" onclick="timer.resetTimer()">
             </div>
