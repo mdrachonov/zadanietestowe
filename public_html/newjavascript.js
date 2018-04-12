@@ -23,4 +23,4 @@ class startTime {
             return i;
     }
 }
-var Clock=new startTime();
+var Clock = new startTime();
