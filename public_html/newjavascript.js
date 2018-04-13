@@ -1,86 +1,99 @@
-var slideNow = 1; //mówimy funkcji na jakim słajdzie znajdujemy się
-var slideCount = $('#slider').children().length; //ilość wszystkich słajdów
-var slideInterval = 3000;
-var navButtonId = 0; //numer wybranego przycisku nawigacji
-var translateWidth = 0;
+var slideWrapper = function() {
+    
+    this.construct = function(){
+        this.slideNow = 1;
+        this.translateWidth = 0;
+        this.slideCount = $('#slider').children().length;
+    };
+    
+    this.nextSlide = function() {
+        if (this.slideNow == this.slideCount || this.slideNow <= 0 || this.slideNow > this.slideCount) {
+            $('#slider').css({'transform': 'translate(0, 0)'});
+
+            this.slideNow = 1;
+        }
+
+        else {
+            this.translateWidth = -$('#viewport').width() * (this.slideNow);
+
+            $('#slider').css({
+                    'transform': 'translate(' + this.translateWidth + 'px, 0)',
+                    '-webkit-transform': 'translate(' + this.translateWidth + 'px, 0)',
+                    '-ms-transform': 'translate(' + this.translateWidth + 'px, 0)'
+                }); 
+
+            this.slideNow++;
+        }
+    };
+
+    this.prevSlide = function() {
+        if (this.slideNow == 1 || this.lideNow <= 0 || this.slideNow > this.slideCount) {
+            this.translateWidth = -$('#viewport').width() * (this.slideCount - 1);
+
+            $('#slider').css({
+                    'transform': 'translate(' + this.translateWidth + 'px, 0)',
+                    '-webkit-transform': 'translate(' + this.translateWidth + 'px, 0)',
+                    '-ms-transform': 'translate(' + this.translateWidth + 'px, 0)'
+                }); 
+
+            this.slideNow = this.slideCount;
+        } 
+
+        else {
+            this.translateWidth = -$('#viewport').width() * (this.slideNow - 2);
+
+            $('#slider').css({
+                    'transform': 'translate(' + this.translateWidth + 'px, 0)',
+                    '-webkit-transform': 'translate(' + this.translateWidth + 'px, 0)',
+                    '-ms-transform': 'translate(' + this.translateWidth + 'px, 0)'
+                }); 
+
+            this.slideNow--;
+        }
+    };
+};
 
 $(document).ready(function() {
-    var switchInterval = setInterval(nextSlide, slideInterval); //uruchamiamy  pokaz słajdów
+    var slideInterval = 3000;
+    var navButtonId = 0;
+    
+     
+    var mainSlideWrapper = new slideWrapper();
+    
+    var switchInterval = setInterval(mainSlideWrapper.nextSlide, slideInterval);
 
     $('#viewport').hover(function() {
         clearInterval(switchInterval);
     }, function() {
-        switchInterval = setInterval(nextSlide, slideInterval);
+        switchInterval = setInterval(mainSlideWrapper.nextSlide, slideInterval);
     });
 
     $('#next-button').click(function() {
-        nextSlide();
+        mainSlideWrapper.nextSlide();
     });
 
     $('#prev-button').click(function() {
-        prevSlide();
+        mainSlideWrapper.prevSlide();
     });
 
     $('.slide-nav-button').click(function() {
-        navButtonId = $(this).index(); //przypisuję zmiennej numer kliknentego przycisku
+        navButtonId = $(this).index();
 
-        if (navButtonId + 1 != slideNow) { //sprawdzamy czy number przycisku i number słajdu są równe
-            translateWidth = -$('#viewport').width() * (navButtonId);
+        if (navButtonId + 1 != mainSlideWrapper.slideNow) {
+            mainSlideWrapper.translateWidth = -$('#viewport').width() * (navButtonId);
             
             $('#slider').css({
-                'transform': 'translate(' + translateWidth + 'px, 0)',
-                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+                'transform': 'translate(' + mainSlideWrapper.translateWidth + 'px, 0)',
+                '-webkit-transform': 'translate(' + mainSlideWrapper.translateWidth + 'px, 0)',
+                '-ms-transform': 'translate(' + mainSlideWrapper.translateWidth + 'px, 0)'
             }); 
             
-            slideNow = navButtonId + 1;
+            mainSlideWrapper.slideNow = navButtonId + 1;
         }
     });
 });
 
 
-function nextSlide() {
-    if (slideNow == slideCount || slideNow <= 0 || slideNow > slideCount) { //sprawdzamy czu znajdujemy się na ostatnim lub na nieistniejącym słajdzie
-        $('#slider').css('transform', 'translate(0, 0)'); //zmieszczamy na początkową pozycję
-        
-        slideNow = 1;
-    } 
-    
-    else {
-        translateWidth = -$('#viewport').width() * (slideNow); //ustawiamy odległość
-        
-        $('#slider').css({
-                'transform': 'translate(' + translateWidth + 'px, 0)',
-                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-            }); 
-        
-        slideNow++;
-    }
-}
 
-function prevSlide() {
-    if (slideNow == 1 || slideNow <= 0 || slideNow > slideCount) { //sprawdzamy czy znajdujemy się na pierwszym słajdzie
-        translateWidth = -$('#viewport').width() * (slideCount - 1); // zmieszczamy no ostatnią pozycję
-        
-        $('#slider').css({
-                'transform': 'translate(' + translateWidth + 'px, 0)',
-                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-            }); 
-        
-        slideNow = slideCount; //ustaliamy pozycję ostatniego słajdu
-    } 
-    
-    else {
-        translateWidth = -$('#viewport').width() * (slideNow - 2); //zmieszczamy na -2, bo translate(x, 0) x już = szerokości 1 słajdu
-        
-        $('#slider').css({
-                'transform': 'translate(' + translateWidth + 'px, 0)',
-                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-            }); 
-        
-        slideNow--;
-    }
-}
+
+
