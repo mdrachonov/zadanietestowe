@@ -6,14 +6,15 @@
         <link rel="stylesheet" href="newcss.css"> 
         <link rel="shortcut icon" href="#">
     </head>
-    <body>
-         
+    <body> 
             <div id="tm">00:00</div>
             <label>Write minutes</label><br>
             <input type="number" id="minutes">
-            <script type="text/javascript" src="newjavascript.js"></script>
-            <input type="button" value="Start" onclick="timer.start()">
-            <input type="button" value="Reset"  onclick="timer.resetTimer()">
-            
+            <input type="button" value="Start" id="start-button">
+            <input type="button" value="Reset" id="reset-button"> 
+            <script type="text/javascript" src="newjavascript.js"></script>            
+            <script>
+                var timer = new Timer("start-button", "reset-button");
+            </script>
     </body>
 </html>
