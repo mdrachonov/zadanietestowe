@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="newcss.css">
         <link rel="shortcut icon" href="#">
-        <script type="text/javascript" src="newjavascript.js" defer></script>
     </head>
-    <body onload="var Clock = new startTime(); Clock.count();">
-        <p>Data i czas</p>
-        <p id="clock"></p>
+    <body>
+        <p>Czas</p>
+        <p id="clock"></p>           
+        <script type="text/javascript" src="newjavascript.js"></script>
+        <script type="text/javascript">
+            var Clock = new startTime();
+            Clock.count();
+        </script>
     </body>
