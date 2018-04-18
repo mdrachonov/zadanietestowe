@@ -28,7 +28,6 @@ class slideWrapper {
             this.slideNow++;
         }
         
-        
         this.currentSlide();
     }
     
@@ -56,8 +55,7 @@ class slideWrapper {
 
             this.slideNow--;
         }
-        
-        
+         
         this.currentSlide();
     }
        
