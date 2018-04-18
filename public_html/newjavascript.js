@@ -7,6 +7,7 @@ class slideWrapper {
         this.navButtonId = 0;
         this.slideInterval = time;
         self = this;
+        this.createDots();
     }
         
     nextSlide() {
@@ -74,12 +75,23 @@ class slideWrapper {
     }
  
     currentSlide() {
-            $('.slide-nav-button').css('background', 'white');
-            $('.slide-nav-button:nth-child(' + this.slideNow + ')').css('background', 'black'); 
+        $('.slide-nav-button').css('background', 'white');
+        
+        $('.slide-nav-button:nth-child(' + this.slideNow + ')').css('background', 'black'); 
+    }
+    
+    createDots() {
+        $(".slide").each(function() { 
+            var elem = $("<div class='slide-nav-button'></div>");
+            
+            $("#nav-buttons").append(elem);
+        });
     }
         
     startSlide() {
+        
         this.switchInterval = setInterval(this.nextSlide.bind(this, this.currentSlide()), this.slideInterval);
+        
         
         $('#slider').hover(function() {
             clearInterval(self.switchInterval);
