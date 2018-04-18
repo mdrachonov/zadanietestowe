@@ -8,8 +8,7 @@ class slideWrapper {
         this.slideInterval = time;
         self = this;
     }
-    
-    
+        
     nextSlide() {
         if (this.slideNow == this.slideCount || this.slideNow <= 0 || this.slideNow > this.slideCount) {
             $('#slider').css('transform', 'translate(0, 0)');
@@ -33,7 +32,6 @@ class slideWrapper {
         this.currentSlide();
     }
     
-
     prevSlide() {
         if (this.slideNow == 1 || this.slideNow <= 0 || this.slideNow > this.slideCount) {
             this.translateWidth = -$('#viewport').width() * (this.slideCount - 1);
@@ -62,8 +60,7 @@ class slideWrapper {
         
         this.currentSlide();
     }
-    
-    
+       
     numberSlideClick() {
         if (this.navButtonId + 1 != this.slideNow) {
             this.translateWidth = -$('#viewport').width() * (this.navButtonId);
@@ -77,8 +74,7 @@ class slideWrapper {
             this.slideNow = this.navButtonId + 1;
         }
     }
-
-    
+ 
     currentSlide() {
             $('.slide-nav-button').css('background', 'white');
             $('.slide-nav-button:nth-child(' + this.slideNow + ')').css('background', 'black'); 
