@@ -7,7 +7,7 @@ class slideWrapper {
         this.navButtonId = 0;
         this.slideInterval = time;
         self = this;
-        this.createDots();
+        this.createNavButtons();
     }
         
     nextSlide() {
@@ -80,7 +80,7 @@ class slideWrapper {
         $('.slide-nav-button:nth-child(' + this.slideNow + ')').css('background', 'black'); 
     }
     
-    createDots() {
+    createNavButtons() {
         $(".slide").each(function() { 
             var elem = $("<div class='slide-nav-button'></div>");
             
@@ -91,7 +91,6 @@ class slideWrapper {
     startSlide() {
         
         this.switchInterval = setInterval(this.nextSlide.bind(this, this.currentSlide()), this.slideInterval);
-        
         
         $('#slider').hover(function() {
             clearInterval(self.switchInterval);
