@@ -6,14 +6,19 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data i czas</title>
+        <title>Wyszukiwanie</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="newcss.css">
-        <script src="newjavascript.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
-    <body onload="startTime()">
-        <p>Data i czas</p>
-        <p id="txt"></p>
+    <body>
+        <input id="spterm" type="text" name="spterm" placeholder="Text dla wyszukiwania"><br />
+        <div id="spresult">&nbsp;</div>
+        <div id="content">
+            <p>Lorem ipsum dolor sit <a>amet</a>, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem.</p>
+        </div>
+        
+        <script src="script.js"></script>
     </body>
 </html>
