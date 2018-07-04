@@ -1,11 +1,8 @@
 span.highlight {
     background-color: #C6D9DB;
-}
-    
-span.splink {
-    color: #0A5794; 
+    cursor: pointer;
 }
 
-span.highlight, span.splink {
-    cursor: pointer;
+.content {
+    margin-top: 20px;
 }

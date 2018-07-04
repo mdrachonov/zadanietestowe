@@ -1,39 +1,37 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
     var minlen = 1;
-    var paddingtop = 30;
-    var scrollspeed = 200;
-    var keyint = 1000;
+    var keyint = 50;
     var term = '';
     var n = 0;
     var time_keyup = 0;
     var time_search = 0;
     
-    jQuery('body').delegate('#spgo', 'click', function(){
-        jQuery('body,html').animate({scrollTop: jQuery('span.highlight:first').offset().top-paddingtop}, scrollspeed);
-    });
-    
     function dosearch() {
-        term = jQuery('#spterm').val();
+        term = jQuery('#finder').val();
 
-        jQuery('span.highlight').each(function(){
+        jQuery('span.highlight').each(function() {
             jQuery(this).after(jQuery(this).html()).remove();  
         });
 
-        var t = '';
-
-        jQuery('div#content').each(function(){
+        jQuery('div.content').each(function() {
             jQuery(this).html(jQuery(this).html().replace(new RegExp(term, 'ig'), '<span class="highlight">$&</span>'));
 
             n = jQuery('span.highlight').length;
+
+            if (n == 0) {
+                jQuery('#find-result').html('Nie ma wyników');
+            } else {
+                jQuery('#find-result').html('Wyników: ' + n); 
+            }
         });
     }
    
-    jQuery('#spterm').keyup(function(){
+    jQuery('#finder').keyup(function() {
         var d1 = new Date();
         time_keyup = d1.getTime();
 
-        if (jQuery('#spterm').val() != term) {
-            if (jQuery('#spterm').val().length >= minlen) {
+        if (jQuery('#finder').val() != term) {
+            if (jQuery('#finder').val().length >= minlen) {
                 setTimeout(function() {
                     var d2 = new Date();
                     time_search = d2.getTime();
@@ -43,7 +41,10 @@ jQuery(document).ready(function(){
                     }
                 }, keyint); 
             } else {
-                jQuery('#spresult').html('&nbsp');
+                jQuery('#find-result').html('&nbsp');
+                jQuery('span.highlight').each(function() {
+                    jQuery(this).after(jQuery(this).html()).remove();  
+                });
             }
         }
     });	
