@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Finder</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script data-require="angular.js@1.2.5" data-semver="1.2.5" src="http://code.angularjs.org/1.2.4/angular.js"></script>
+    <style>
+        .highlighter {
+            background-color: #C6D9DB;
+            cursor: pointer;
+        }
+
+        #find-result {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body ng-app="Finder">
+    <div class="container" ng-controller="Finder">
+        <input type="text" placeholder="Search" ng-model="search.title">
+        <div id="find-result">Search result: {{(data | filter:search.title).length}}/{{data.length}}</div>
+        <ul>
+            <li ng-repeat="item in data | filter:search.title" ng-bind-html="item.title | highlight:search.title">
+            </li>
+        </ul>
+    </div>
+    
+    <script>
+        angular.module('Finder', [])
+        .controller('Finder', function($scope) {
+            $scope.data = [
+                { title: "Beautiful world" },
+                { title: "Bad girl" },
+                { title: "Good dog" },
+                { title: "<a href='#'>Great Britain</a>" },
+                { title: "Cool story <strong>bro</strong>" },
+                { title: "Excellent price" },
+                { title: "Awesome guy" },
+                { title: "Horrible neighbor" }
+            ];
+        })
+        .filter('highlight', function($sce) {
+            return function(text, term) {
+                if (term) {
+                    text = text.replace(new RegExp("(?![^<>]*>)(" + term + ")", 'ig'), '<span class="highlighter">$&</span>');
+                } 
+
+                return $sce.trustAsHtml(text);
+            }
+        })
+    </script>
+</body>
+</html>
