@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>Data i czas</title>
+        <title>Timer</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="newcss.css">
-        <script src="newjavascript.js"></script>
+        <link rel="stylesheet" href="newcss.css"> 
+        <link rel="shortcut icon" href="#">
     </head>
-    <body onload="startTime()">
-        <p>Data i czas</p>
-        <p id="txt"></p>
+    <body> 
+            <div id="tm">00:00</div>
+            <label>Write minutes</label><br>
+            <input type="number" id="minutes">
+            <input type="button" value="Start" id="start-button">
+            <input type="button" value="Reset" id="reset-button"> 
+            <script type="text/javascript" src="newjavascript.js"></script>            
+            <script>
+                var timer = new Timer("start-button", "reset-button");
+            </script>
     </body>
 </html>
