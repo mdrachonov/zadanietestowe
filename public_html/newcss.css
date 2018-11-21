@@ -1,3 +1,85 @@
-span{
-    color: black;
-}
+body, html {
+        height: 100%;
+        margin: 0;        
+        font-weight: 100;
+        background: #aadfeb;
+        text-align: center;
+        font-family: helvetica;
+      }
+
+      .tabs input[type=radio] {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      .tabs {
+        width: 650px;
+        float: none;
+        list-style: none;
+        position: relative;
+        padding: 0;
+        margin: 75px auto;
+      }
+
+      .tabs li{
+        float: left;
+      }
+
+      .tabs label {
+        display: block;
+        padding: 10px 20px;          
+        color: #08C;
+        font-size: 24px;
+        font-weight: normal;
+        background: rgba(255,255,255,0.2);
+        cursor: pointer;
+        position: relative;
+        top: 3px;
+        transition: all 0.2s;
+      }
+
+      .tabs label:hover {
+        background: rgba(255,255,255,0.5);
+        top: 0;
+      }
+
+      [id^=tab]:checked + label {
+        background: #08C;
+        color: white;
+        top: 0;
+      }
+
+      [id^=tab]:checked ~ [id^=tab-content] {
+        display: block;
+      }
+
+      .tab-content {
+        z-index: 2;
+        display: none;
+        text-align: left;
+        width: 100%;
+        font-size: 20px;
+        line-height: 140%;
+        padding-top: 10px;
+        background: #08C;
+        padding: 15px;
+        color: white;
+        position: absolute;
+        top: 53px;
+        left: 0;
+        box-sizing: border-box;
+      }
+
+      input#minutes {
+        background: #aadfeb;
+        border: none;
+        height: 20px;
+        border: 1px solid white;
+        color: #08C;
+        padding: 3px;
+      }
+      
+      p#textMinute {
+        margin-bottom: -5px;
+      }
