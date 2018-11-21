@@ -1,3 +1,89 @@
-span{
-    color: black;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#block-for-slider {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+#viewport {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    text-align: center;
+}
+
+#slider {
+    position: relative;
+    width: calc(100% * 3);
+    transition: 1s;
+    transition-timing-function: ease-in-out;
+}
+
+#slider, #slider ul, #slider li {
+    margin: 0;
+    padding: 0;
+}
+
+.slide {
+    width: calc(100%/3);
+    list-style: none;
+    display: inline;
+    float: left;
+}
+
+.slide-img {
+    width: 100%;
+}
+
+#prev-button, #next-button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: calc(50% - 25px);
+}
+
+#prev-button:hover, #next-button:hover {
+    cursor: pointer;
+}
+
+#prev-button {
+    left: 20px;
+}
+
+#next-button {
+    right: 20px;
+}
+
+.slider-dot{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+#nav-buttons {
+    width: 150px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.slide-nav-button {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50px;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.slide-nav-button:hover {
+    cursor: pointer;
 }
