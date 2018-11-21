@@ -1,20 +1,29 @@
-function startTime()
-{
-var tm=new Date();
-var h=tm.getHours();
-var m=tm.getMinutes();
-var s=tm.getSeconds();
-m=checkTime(m);
-s=checkTime(s);
-document.getElementById('txt').innerHTML=h+":"+m+":"+s;
-t=setTimeout('startTime()',500);
-}
-function checkTime(i)
-{
-if (i<10)
-{
-i="0" + i;
-}
-return i;
-}
+class startTime {
+    
+    constructor() {
+        this.count();
+    }
+    
+    count() {
+        var date = new Date();
 
+        this.h = date.getHours();
+        this.m = date.getMinutes(); 
+        this.s = date.getSeconds();
+
+        this.m = this.checkTime(this.m); 
+        this.s = this.checkTime(this.s); 
+
+        document.getElementById('clock').innerHTML = this.h + ":" + this.m + ":" + this.s; 
+
+        this.t = setTimeout(this.count.bind(this), 500);
+    }
+
+    checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+
+        return i;
+    }
+}
